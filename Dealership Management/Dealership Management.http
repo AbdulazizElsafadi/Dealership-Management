@@ -1,0 +1,65 @@
+@Dealership_Management_HostAddress = http://localhost:5220
+
+GET {{Dealership_Management_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+### Get all vehicles
+GET {{Dealership_Management_HostAddress}}/api/vehicles
+Accept: application/json
+
+###
+
+### Get vehicle by ID
+GET {{Dealership_Management_HostAddress}}/api/vehicles/1
+Accept: application/json
+
+###
+
+### Get available vehicles only
+GET {{Dealership_Management_HostAddress}}/api/vehicles/available
+Accept: application/json
+
+###
+
+### Search vehicles
+GET {{Dealership_Management_HostAddress}}/api/vehicles/search?make=Toyota&minYear=2020
+Accept: application/json
+
+###
+
+### Create new vehicle
+POST {{Dealership_Management_HostAddress}}/api/vehicles
+Content-Type: application/json
+
+{
+  "make": "Ford",
+  "model": "Mustang",
+  "year": 2023,
+  "vin": "1FATP8UH5K5123456",
+  "price": 45000.00,
+  "color": "Red",
+  "transmission": "Manual",
+  "fuelType": "Gasoline",
+  "mileage": 5000,
+  "description": "Beautiful sports car with low mileage"
+}
+
+###
+
+### Update vehicle
+PUT {{Dealership_Management_HostAddress}}/api/vehicles/1
+Content-Type: application/json
+
+{
+  "price": 26000.00,
+  "description": "Updated description"
+}
+
+###
+
+### Delete vehicle
+DELETE {{Dealership_Management_HostAddress}}/api/vehicles/1
+
+###

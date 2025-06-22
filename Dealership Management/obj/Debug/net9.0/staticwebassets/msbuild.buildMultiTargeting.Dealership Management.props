@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/Dealership Management.props" />
+</Project>
