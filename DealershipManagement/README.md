@@ -107,7 +107,7 @@ Dealership Management/
 
    ```bash
    git clone https://github.com/AbdulazizElsafadi/Dealership-Management.git
-   cd "Dealership Management"
+   cd "DealershipManagement"
    ```
 
 2. **Install dependencies**

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dealership_Management.Migrations
 {
     [DbContext(typeof(DealershipDbContext))]
-    [Migration("20250622121045_InitialCreate")]
+    [Migration("20250623045928_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -40,10 +40,8 @@ namespace Dealership_Management.Migrations
                     b.Property<bool>("IsUsed")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Purpose")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Purpose")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
@@ -64,7 +62,14 @@ namespace Dealership_Management.Migrations
                     b.Property<decimal>("PriceAtPurchase")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int?>("ProcessedByAdminId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("PurchaseDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("UserId")
@@ -74,6 +79,8 @@ namespace Dealership_Management.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProcessedByAdminId");
 
                     b.HasIndex("UserId");
 
@@ -122,7 +129,7 @@ namespace Dealership_Management.Migrations
                             CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin@dealership.com",
                             FullName = "Admin User",
-                            PasswordHash = "hashed_password",
+                            PasswordHash = "$2a$11$wmOjDPms5cgLvyfWy01PDOI7pApu.REy5Y/tsJWS6jUHaA/ilcbQS",
                             Role = 1
                         },
                         new
@@ -131,7 +138,7 @@ namespace Dealership_Management.Migrations
                             CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "customer@dealership.com",
                             FullName = "Customer User",
-                            PasswordHash = "hashed_password",
+                            PasswordHash = "$2a$11$QBOir4Giratxj0UHNbJHyuyQDFZ5lIme0NpU2OYoyr2Zf87XjEcaG",
                             Role = 0
                         });
                 });
@@ -205,6 +212,110 @@ namespace Dealership_Management.Migrations
                             Model = "CR-V",
                             Price = 28000.00m,
                             Year = 2021
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Color = "Red",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Sporty coupe, low mileage",
+                            IsAvailable = true,
+                            Make = "Ford",
+                            Mileage = 5000,
+                            Model = "Mustang",
+                            Price = 35000.00m,
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Color = "White",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Reliable sedan, one owner",
+                            IsAvailable = true,
+                            Make = "Chevrolet",
+                            Mileage = 30000,
+                            Model = "Malibu",
+                            Price = 18000.00m,
+                            Year = 2020
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Color = "Black",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Electric, autopilot included",
+                            IsAvailable = true,
+                            Make = "Tesla",
+                            Mileage = 12000,
+                            Model = "Model 3",
+                            Price = 42000.00m,
+                            Year = 2022
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Color = "Gray",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Luxury SUV, well maintained",
+                            IsAvailable = true,
+                            Make = "BMW",
+                            Mileage = 35000,
+                            Model = "X5",
+                            Price = 39000.00m,
+                            Year = 2019
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Color = "Blue",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Premium sedan, great condition",
+                            IsAvailable = true,
+                            Make = "Audi",
+                            Mileage = 18000,
+                            Model = "A4",
+                            Price = 32000.00m,
+                            Year = 2021
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Color = "Silver",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Fuel efficient, compact sedan",
+                            IsAvailable = true,
+                            Make = "Hyundai",
+                            Mileage = 25000,
+                            Model = "Elantra",
+                            Price = 16000.00m,
+                            Year = 2020
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Color = "White",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Spacious SUV, family friendly",
+                            IsAvailable = true,
+                            Make = "Kia",
+                            Mileage = 40000,
+                            Model = "Sorento",
+                            Price = 21000.00m,
+                            Year = 2018
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Color = "Black",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Luxury sedan, almost new",
+                            IsAvailable = true,
+                            Make = "Mercedes-Benz",
+                            Mileage = 9000,
+                            Model = "C-Class",
+                            Price = 45000.00m,
+                            Year = 2022
                         });
                 });
 
@@ -221,6 +332,11 @@ namespace Dealership_Management.Migrations
 
             modelBuilder.Entity("Dealership_Management.Models.Purchase", b =>
                 {
+                    b.HasOne("Dealership_Management.Models.User", "ProcessedByAdmin")
+                        .WithMany()
+                        .HasForeignKey("ProcessedByAdminId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("Dealership_Management.Models.User", "User")
                         .WithMany("Purchases")
                         .HasForeignKey("UserId")
@@ -232,6 +348,8 @@ namespace Dealership_Management.Migrations
                         .HasForeignKey("VehicleId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("ProcessedByAdmin");
 
                     b.Navigation("User");
 

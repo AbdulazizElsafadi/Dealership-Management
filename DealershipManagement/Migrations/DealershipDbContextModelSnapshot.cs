@@ -37,10 +37,8 @@ namespace Dealership_Management.Migrations
                     b.Property<bool>("IsUsed")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Purpose")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Purpose")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
@@ -49,7 +47,7 @@ namespace Dealership_Management.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("OtpCodes", (string)null);
+                    b.ToTable("OtpCodes");
                 });
 
             modelBuilder.Entity("Dealership_Management.Models.Purchase", b =>
@@ -85,7 +83,7 @@ namespace Dealership_Management.Migrations
 
                     b.HasIndex("VehicleId");
 
-                    b.ToTable("Purchases", (string)null);
+                    b.ToTable("Purchases");
                 });
 
             modelBuilder.Entity("Dealership_Management.Models.User", b =>
@@ -119,7 +117,7 @@ namespace Dealership_Management.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
 
                     b.HasData(
                         new
@@ -128,7 +126,7 @@ namespace Dealership_Management.Migrations
                             CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin@dealership.com",
                             FullName = "Admin User",
-                            PasswordHash = "hashed_password",
+                            PasswordHash = "$2a$11$wmOjDPms5cgLvyfWy01PDOI7pApu.REy5Y/tsJWS6jUHaA/ilcbQS",
                             Role = 1
                         },
                         new
@@ -137,7 +135,7 @@ namespace Dealership_Management.Migrations
                             CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "customer@dealership.com",
                             FullName = "Customer User",
-                            PasswordHash = "hashed_password",
+                            PasswordHash = "$2a$11$QBOir4Giratxj0UHNbJHyuyQDFZ5lIme0NpU2OYoyr2Zf87XjEcaG",
                             Role = 0
                         });
                 });
@@ -183,7 +181,7 @@ namespace Dealership_Management.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Vehicles", (string)null);
+                    b.ToTable("Vehicles");
 
                     b.HasData(
                         new
